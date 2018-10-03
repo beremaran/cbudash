@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "url": "http://muhendislik.cbu.edu.tr/",
+      "parser": "CBUParser"
+    },
+    {
+      "url": "http://bilgisayarmuh.cbu.edu.tr/",
+      "parser": "CBUParser"
+    }
+  ]
+}
