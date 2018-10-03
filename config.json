@@ -1,10 +1,12 @@
 {
   "sources": [
     {
+      "title": "CBÜ Mühendislik",
       "url": "http://muhendislik.cbu.edu.tr/",
       "parser": "CBUParser"
     },
     {
+      "title": "CBÜ CSE",
       "url": "http://bilgisayarmuh.cbu.edu.tr/",
       "parser": "CBUParser"
     }
