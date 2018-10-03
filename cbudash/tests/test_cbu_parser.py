@@ -46,3 +46,7 @@ class TestCbuParser(unittest.TestCase):
             first_item.date.strftime('%Y-%m-%d'),
             datetime.datetime(year=2018, month=10, day=1).date().strftime('%Y-%m-%d')
         )
+
+    def test_parser_obeys_the_item_number_limit(self):
+        items = self.parser.parse(get_src_cse_home(), limit=10)
+        self.assertEqual(len(items), 10)
