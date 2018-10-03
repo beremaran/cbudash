@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import unittest
 
 from cbudash.dash import CBUDash
@@ -32,3 +33,12 @@ class TestDash(unittest.TestCase):
         for parsed_source in data:
             for i in range(len(parsed_source[1]) - 1):
                 self.assertTrue(parsed_source[1][i].date >= parsed_source[1][i + 1].date)
+
+    def test_dash_obeys_news_number_limit_in_configuration(self):
+        data = self.dash.get()
+        config = json.load(open('./config.json', 'r'))
+
+        self.assertIn('news_limit', config.keys())
+
+        for source in data:
+            self.assertLessEqual(len(source[1]), config['news_limit'])
