@@ -10,6 +10,11 @@
       "title": "CBÜ CSE",
       "url": "http://bilgisayarmuh.cbu.edu.tr/",
       "parser": "CBUParser"
+    },
+    {
+      "title": "CBÜ SKS",
+      "url": "http://sks.cbu.edu.tr/",
+      "parser": "CBUParser"
     }
   ]
 }
