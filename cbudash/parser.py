@@ -26,7 +26,7 @@ class BaseParser:
     def __init__(self):
         self.name = 'BaseParser'
 
-    def parse(self, html: str) -> NewsGroup:
+    def parse(self, html: str, limit: int = -1) -> NewsGroup:
         raise NotImplementedError
 
 
@@ -37,7 +37,7 @@ class CBUParser(BaseParser):
 
         self.name = 'CBUParser'
 
-    def parse(self, html: str) -> NewsGroup:
+    def parse(self, html: str, limit: int = -1) -> NewsGroup:
         result = NewsGroup()
 
         soup = BeautifulSoup(html, 'html.parser')
@@ -56,6 +56,9 @@ class CBUParser(BaseParser):
             title = link_title.strip()
 
             result.append(NewsItem(date, category, title, url))
+
+            if len(result) >= limit > 0:
+                break
 
         return result
 
