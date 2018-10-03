@@ -4,7 +4,9 @@
   "description": "Check CBU news in one place",
   "main": "assets/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
+    "test": "nosetests --with-xunit --with-xcoverage --cover-package=cbudash --cover-erase cbudash.tests"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,15 @@
     "bootstrap": "^4.1.3",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   }
 }
