@@ -38,7 +38,7 @@ class CBUDash:
         out = []
 
         for fetched_source in self._fetch_sources():
-            news = fetched_source[1].parse(fetched_source[2])
+            news = fetched_source[1].parse(fetched_source[2], limit=self.config['news_limit'])
             news.sort(key=lambda x: x.date, reverse=True)
             out.append((fetched_source[0], news))
 
