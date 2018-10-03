@@ -30,15 +30,16 @@ class CBUDash:
 
     def _fetch_sources(self) -> list:
         return [
-            (self.parsers[source['parser']], requests.get(source['url']).text)
+            (source['title'], self.parsers[source['parser']], requests.get(source['url']).text)
             for source in self.sources
         ]
 
     def _parse_sources(self) -> list:
-        combined_news_groups = []
+        out = []
 
         for fetched_source in self._fetch_sources():
-            combined_news_groups.extend(fetched_source[0].parse(fetched_source[1]))
+            news = fetched_source[1].parse(fetched_source[2])
+            news.sort(key=lambda x: x.date, reverse=True)
+            out.append((fetched_source[0], news))
 
-        combined_news_groups.sort(key=lambda x: x.date, reverse=True)
-        return [news_item.to_dict() for news_item in combined_news_groups]
+        return out
