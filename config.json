@@ -1,4 +1,5 @@
 {
+  "news_limit": 10,
   "sources": [
     {
       "title": "CBÜ Mühendislik",
