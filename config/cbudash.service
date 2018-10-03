@@ -7,7 +7,7 @@ User=cbdsh
 Group=www-data
 WorkingDirectory=/home/cbdsh/cbudash
 Environment="PATH=/home/cbdsh/cbudash/venv/bin"
-ExecStart=/home/cbdsh/venv/bin/uwsgi --ini config/cbudash.ini
+ExecStart=/home/cbdsh/cbudash/venv/bin/uwsgi --ini config/cbudash.ini
 
 [Install]
 WantedBy=multi-user.target
