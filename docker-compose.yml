@@ -19,7 +19,7 @@ services:
     volumes:
       - '.:/code'
     ports:
-      - '8083:8000'
+      - '127.0.0.1:8083:8000'
 
   celery:
     build: .
