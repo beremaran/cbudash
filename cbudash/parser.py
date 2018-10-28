@@ -37,7 +37,7 @@ class CBUParser(BaseParser):
 
         self.name = 'CBUParser'
 
-    def parse(self, html: str, limit: int = -1) -> NewsGroup:
+    def parse(self, html: str, limit: int = -1, as_dict=False) -> NewsGroup:
         result = NewsGroup()
 
         soup = BeautifulSoup(html, 'html.parser')
@@ -60,7 +60,7 @@ class CBUParser(BaseParser):
             if len(result) >= limit > 0:
                 break
 
-        return result
+        return result if not as_dict else result.to_dict()
 
     def _parse_date(self, date_str) -> datetime.date:
         tokens = date_str.split('.')
