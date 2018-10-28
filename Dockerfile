@@ -1,12 +1,10 @@
 FROM python:3.6
 MAINTAINER Berke Arslan <berke@beremaran.com>
 
-ENV INSTALL_PATH /code/
-RUN mkdir -p $INSTALL_PATH
-WORKDIR $INSTALL_PATH
-COPY requirements.txt $INSTALL_PATH
+WORKDIR .
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-COPY . $INSTALL_PATH
+COPY . .
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update
