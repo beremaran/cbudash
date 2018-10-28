@@ -1,0 +1,31 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    command: redis-server
+    volumes:
+      - 'redis:/data'
+    ports:
+      - '6379:6379'
+  website:
+    build: .
+    command: >
+      gunicorn -b 0.0.0.0:8000
+        --access-logfile -
+        --reload
+        "app"
+    environment:
+      PYTHONUNBUFFERED: 'true'
+    volumes:
+      - '.:/code'
+    ports:
+      - '8083:8000'
+
+  celery:
+    build: .
+    command: celery worker -l info -A app.celery -B
+    volumes:
+      - '.:/code'
+
+volumes:
+  redis:
